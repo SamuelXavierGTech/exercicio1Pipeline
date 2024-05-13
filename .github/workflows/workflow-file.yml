@@ -1,14 +1,19 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
-on: [push]
+
+on:
+  push:
+
 jobs:
- build:
- name: PrimeroJob
- runs-on: ubuntu-latest
- steps:
- - uses: actions/checkout@v2
- - name: Executando o STEP1
- run: |
- echo Esse processo carrega uma mensagem
- echo basica para entender o workflow
+  build:
+    name: PrimeiroJob
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+      - name: Executando o STEP1
+        run: |
+          echo "Esse processo carrega uma mensagem"
+          echo "básica para entender o workflow"
+
