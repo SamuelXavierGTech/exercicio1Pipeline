@@ -1,19 +1,23 @@
-# This is a basic workflow to help you get started with Actions
+name: CI  # Define o nome do seu workflow como "CI"
 
-name: CI
+on:  # Define os eventos que acionam o workflow
+  push:  # Executa quando ocorre um push
+    branches: [ "master" ]  # Apenas na branch "master"
+  pull_request:  # Executa quando ocorre um pull request
+    branches: [ "master" ]  # Apenas na branch "master"
 
-on:
-  push:
+jobs:  # Define os jobs (tarefas) a serem executados no workflow
+  build:  # Define uma tarefa chamada "build"
+    runs-on: ubuntu-latest  # Define o sistema operacional onde a tarefa será executada como o mais recente Ubuntu
 
-jobs:
-  build:
-    name: PrimeiroJob
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
-      - name: Executando o STEP1
-        run: |
-          echo "Esse processo carrega uma mensagem"
-          echo "básica para entender o workflow"
+    steps:  # Define as etapas (passos) a serem executadas dentro da tarefa
+      - uses: actions/checkout@v4  # Usa uma ação para fazer o checkout do repositório na máquina virtual
+      - name: Run a one-line script  # Nome da etapa
+        run: echo Hello, world!  # Executa um script de uma linha para imprimir "Hello, world!"
+      - name: Run a multi-line script  # Nome da etapa
+        run: |  # Executa um script de várias linhas
+          echo Add other actions to build,  # Imprime uma mensagem
+          echo test, and deploy your project.  # Imprime outra mensagem
+
+
 
